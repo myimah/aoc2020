@@ -35,9 +35,9 @@ def part1():
     for ticket in tickets:
         for i in range(len(ticket)):
             valid = False
-            for ranges in fields.values():
-                for ra in ranges:
-                    if ra[0] <= ticket[i] <= ra[1]:
+            for field_ranges in fields.values():
+                for field_range in field_ranges:
+                    if field_range[0] <= ticket[i] <= field_range[1]:
                         valid = True
             if not valid:
                 error_rate += ticket[i]
@@ -45,25 +45,15 @@ def part1():
     return error_rate
 
 
-invalid_tickets.append(your_ticket)
-
-
 def check(field, pos):
-    r = fields.get(field)
+    field_range = fields.get(field)
     for ticket in tickets:
         if ticket in invalid_tickets:
             continue
-        if not (r[0][0] <= ticket[pos] <= r[0][1] or r[1][0] <= ticket[pos] <= r[1][1]):
+        if not (field_range[0][0] <= ticket[pos] <= field_range[0][1] or field_range[1][0] <= ticket[pos] <=
+                field_range[1][1]):
             return False
     return True
-
-
-def get_next(pos, path):
-    values = []
-    for i in works_for[pos]:
-        if i not in path:
-            values.append(i)
-    return values
 
 
 paths = []
