@@ -72,12 +72,12 @@ def part2():
     while "" in valid_order:
         for i in range(len(valid_order)):
             if valid_order[i] == "":
-                valid_fields = set()
+                valid_fields = []
                 for field in works_for[i]:
                     if field not in valid_order:
-                        valid_fields.add(field)
-                if len(valid_fields) == 1:
-                    valid_order[i] = valid_fields.pop()
+                        valid_fields.append(field)
+                if len(set(valid_fields)) == 1:
+                    valid_order[i] = valid_fields[0]
     f = 1
     for i in range(len(valid_order)):
         if valid_order[i].startswith("departure"):
