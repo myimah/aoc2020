@@ -1,5 +1,4 @@
 import fileinput
-from itertools import permutations
 
 fields = {}
 your_ticket = []
@@ -12,12 +11,12 @@ for line in fileinput.input("input.txt"):
         t += 1
         continue
     if t == 0:
-        name, ranges = line.split(":")
-        ranges = ranges.split(" or ")
+        field_name, f_ranges = line.split(":")
+        f_ranges = f_ranges.split(" or ")
         r = []
-        for ra in ranges:
-            r.append([int(i) for i in ra.split("-")])
-        fields[name] = r
+        for f_range in f_ranges:
+            r.append([int(i) for i in f_range.split("-")])
+        fields[field_name] = r
     elif t == 1:
         if line != "your ticket:":
             your_ticket = [int(i) for i in line.split(",")]
