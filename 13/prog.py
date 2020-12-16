@@ -38,8 +38,6 @@ def part2():
         offset = req[0]
         cycle = req[1]
         if (time + offset) % cycle == 0:
-            print(step)
-
             step = lcm(step, cycle)
             goodness = goodness + 1
         else:

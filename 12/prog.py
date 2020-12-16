@@ -62,7 +62,6 @@ def part2():
         length = int(move[1:])
 
         if direc == "F":
-            print(length * waypoint_east, length * waypoint_north)
             pos_north += length * waypoint_north
             pos_east += length * waypoint_east
         elif direc == "R":
@@ -77,8 +76,6 @@ def part2():
             waypoint_east += length
         elif direc == "W":
             waypoint_east -= length
-        print(pos_east, pos_north)
-        print(waypoint_east, waypoint_north)
 
     return abs(pos_east) + abs(pos_north)
 
