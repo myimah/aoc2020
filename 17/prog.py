@@ -2,15 +2,8 @@ import fileinput
 
 inputs = []
 
-# . : inactive
-# # : active
-
 for line in fileinput.input("input.txt"):
     inputs.append(line)
-
-
-# active : 2 or 3 active around -> active : inactive
-# inactive : 3 around -> active : inactive
 
 
 def count_around(pos_x, pos_y, pos_z, grid):
@@ -25,7 +18,6 @@ def count_around(pos_x, pos_y, pos_z, grid):
 
 
 def part1():
-    # grid : {(x, y, z): #/.}
     grid = {}
 
     for y in range(len(inputs)):
@@ -70,7 +62,6 @@ def count_around_w(pos_x, pos_y, pos_z, pos_w, grid):
 
 
 def part2():
-    # grid : {(x, y, z, w): #/.}
     grid = {}
 
     for y in range(len(inputs)):
