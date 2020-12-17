@@ -26,17 +26,17 @@ def count_around_2(current_state, line, column):
             if j == i == 0:
                 continue
             distance = 1
-            s_line = 0
-            s_column = 0
-            while 0 <= s_line < len(current_state) and 0 <= s_column < len(current_state[s_line]):
-                s_column = column + j * distance
-                s_line = line + i * distance
+            s_line = line + i * distance
+            s_column = column + j * distance
+            while 0 <= line + i * distance < len(current_state) and 0 <= column + j * distance < len(current_state[s_line]):
                 if current_state[s_line][s_column] == '#':
                     c += 1
                     break
                 elif current_state[s_line][s_column] == 'L':
                     break
                 distance += 1
+                s_line = line + i * distance
+                s_column = column + j * distance
     return c
 
 

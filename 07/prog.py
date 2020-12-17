@@ -6,7 +6,7 @@ for line in fileinput.input("input.txt"):
     inputs.append(line)
 
 
-def gen_map():
+def gen_map(remove_number=False):
     bags_map = {}
 
     for ipt in inputs:
@@ -19,16 +19,16 @@ def gen_map():
             if "no other" not in col:
                 bags_map[holder].append(
                     col.replace("\n", "").replace("bags", "").replace("bag", "").replace(".", "").strip())
+                if remove_number:
+                    bags_map[holder][-1] = bags_map[holder][-1].split(" ", 1)[1]
     return bags_map
 
 
 def present_inside(bags_map, color):
-    color = color.split(" ", 1)[1]
     bags = [color]
     for bag in bags_map:
-        for color_b in bags_map[bag]:
-            if color in color_b:
-                bags += present_inside(bags_map, bag)
+        if color in bags_map[bag]:
+            bags += present_inside(bags_map, bag)
     return bags
 
 
@@ -44,7 +44,7 @@ def count_inside_bag(bags_map, color):
 
 
 def part1():
-    return len(set(present_inside(gen_map(), "shiny gold"))) - 1
+    return len(set(present_inside(gen_map(True), "shiny gold"))) - 1
 
 
 def part2():

@@ -17,7 +17,7 @@ def part1():
         elif li[i] - li[i - 1] == 3:
             jolt_3 += 1
 
-    return jolt_1, jolt_3, jolt_1 * jolt_3
+    return jolt_1 * jolt_3
 
 
 max_value = max(inputs) + 3

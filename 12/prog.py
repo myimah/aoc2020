@@ -37,6 +37,7 @@ def part1():
 
     return abs(pos_east) + abs(pos_north)
 
+
 def rotate(point, angle):
     """
     Rotate a point counterclockwise by a given angle around a given origin.
